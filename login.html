@@ -1,0 +1,78 @@
+<!-- login.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: url('01de9760134d2711013f7928bb2778.jpg') no-repeat center center fixed;
+            background-size:100%;
+            display: flex;
+            justify-content: flex-end;
+            font-family:"等线";
+            font-weight:500;
+            font-size: 15px;
+        }
+        .login-box {
+            background: rgba(255, 255, 255, 0.5);
+            padding: 50px;
+            width: 300px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .title {
+            position: absolute;
+            left: 60px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 2em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            width: 800px;
+        }
+        input, button {
+            margin: 10px 0;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background: #2c3e50;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="title">事业编无纸化冲刺计划@文良路的夏天</div>
+    <div class="login-box">
+        <h2>局长请学习</h2>
+        <input type="text" id="username" placeholder="点击空白播放局长专用曲">
+        <button onclick="login()">立即进入</button>
+    </div>
+         <!-- 背景音乐 -->
+         <audio id="bgm" loop>
+            <source src="background-music.mp3" type="audio/mpeg">
+        </audio>
+
+    <script>
+        function login() {
+            const username = document.getElementById('username').value;
+            if(username === 'qlshijuzhang888') {
+                window.location.href = 'main.html';
+            } else {
+                alert('回家吧，孩子');
+            }
+        }
+        // 自动播放背景音乐（需要用户交互）
+        document.addEventListener('click', () => {
+            const bgm = document.getElementById('bgm');
+            bgm.play();
+            document.removeEventListener('click', this);
+        });
+    </script>
+</body>
+</html>

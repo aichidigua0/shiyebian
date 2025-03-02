@@ -1,0 +1,156 @@
+<!app2 html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>抖音</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft YaHei', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(45deg, #000000, #FE2C55);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 动态背景粒子效果 */
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        /* 主容器 */
+        .container {
+            position: relative;
+            z-index: 2;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(254, 44, 85, 0.3);
+            text-align: center;
+        }
+
+        /* 抖音LOGO动画 */
+        .douyin-logo {
+            width: 150px;
+            animation: logoFloat 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 15px rgba(254, 44, 85, 0.5));
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* 入口按钮 */
+        .entry-button {
+            display: inline-block;
+            margin: 30px 0;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #FE2C55, #000000);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 1.2em;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .entry-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.3),
+                transparent
+            );
+            transition: 0.5s;
+        }
+
+        .entry-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(254, 44, 85, 0.5);
+        }
+
+        .entry-button:hover::before {
+            left: 100%;
+        }
+
+        /* 动态文字 */
+        .slogan {
+            color: white;
+            font-size: 1.5em;
+            margin: 20px 0;
+            text-shadow: 0 0 10px rgba(254, 44, 85, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <!-- 背景粒子 -->
+    <div class="particles"></div>
+
+    <div class="container">
+        <img src="icon4.png" class="douyin-logo" alt="抖音Logo">
+        <h1 class="slogan">局长累了就歇会</h1>
+        <a href="https://www.douyin.com" target="_blank" class="entry-button">
+            <i class="fab fa-tiktok"></i>
+            立即进入抖音官网
+        </a>
+    </div>
+
+    <script>
+        // 生成背景粒子
+        function createParticles() {
+            const particles = document.querySelector('.particles');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.style.cssText = `
+                    position: absolute;
+                    background: rgba(254, 44, 85, ${Math.random() * 0.5});
+                    width: ${Math.random() * 6 + 2}px;
+                    height: ${Math.random() * 6 + 2}px;
+                    border-radius: 50%;
+                    animation: move ${Math.random() * 5 + 5}s linear infinite;
+                    left: ${Math.random() * 100}%;
+                    top: ${Math.random() * 100}%;
+                `;
+                particles.appendChild(particle);
+            }
+
+            // 添加粒子动画
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes move {
+                    0% { transform: translateY(0); opacity: 0; }
+                    50% { opacity: 1; }
+                    100% { transform: translateY(-100vh); opacity: 0; }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
+        createParticles();
+    </script>
+    
+    <!-- Font Awesome 图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</body>
+</html>

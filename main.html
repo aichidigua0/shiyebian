@@ -1,0 +1,164 @@
+<!main html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事业编无纸化冲刺系统</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            background: url('bg.jpg') no-repeat center/cover fixed;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        /* 窗口控制按钮 */
+        .window-controls {
+            position: fixed;
+            top: 12px;
+            left: 12px;
+            display: flex;
+            gap: 8px;
+            z-index: 100;
+        }
+        .control-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .red { background: #ff5f56; }
+        .yellow { background: #ffbd2e; }
+        .green { background: #27c93f; }
+
+        /* 顶部导航栏 */
+        .top-bar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(8px);
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 0 20px;
+        }
+        .nav-item {
+            color: rgb(255,255,255);
+            font-family: '等线', 'Microsoft YaHei', sans-serif;
+            font-size: 14px;
+            margin-left: 30px;
+            cursor: pointer;
+            transition: opacity 0.3s;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        .nav-item:hover {
+            opacity: 1;
+        }
+
+        /* 主内容区 */
+        .main-content {
+            height: calc(100vh - 110px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 0px;
+        }
+        .hero-text {
+            font-size: 3.5em;
+            font-family: "等线";
+            height: 180px;
+            color: rgb(255, 255, 255);
+            margin: 20px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        /* Dock栏 */
+        .dock {
+            bottom: 1px;
+            width: 2000%;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 20px 0;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
+            border-radius: 15px;
+            margin: 0 auto;
+            max-width: 1000px;
+        }
+        .dock-item {
+            width: 65px;
+            height: 65px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .dock-item:hover {
+            transform: scale(1.2) translateY(-20px);
+        }
+        .dock-item img {
+            width: 70%;
+            height: 70%;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+    <!-- 窗口控制按钮 -->
+    <div class="window-controls">
+        <div class="control-dot red"></div>
+        <div class="control-dot yellow"></div>
+        <div class="control-dot green"></div>
+    </div>
+
+    <!-- 顶部导航栏 -->
+    <div class="top-bar">
+        <div class="nav-item" onclick="window.location.href='rwzx.html'">任务中心</div>
+        <div class="nav-item" onclick="window.location.href='zlzx.html'">资料中心</div>
+        <div class="nav-item" onclick="window.location.href='exam.html'">考试中心</div>
+        <div class="nav-item" onclick="window.location.href='grzx.html'">个人中心</div>
+    </div>
+
+    <!-- 主内容区 -->
+    <div class="main-content">
+        <div class="hero-section">
+            <div class="hero-text">事业编无纸化冲刺专用系统</div>
+        </div>
+    </div>
+
+    <!-- Dock栏 -->
+    <div class="dock">
+        <!-- 重复10个应用图标 -->
+        <a href="app1.html" class="dock-item"><img src="icon1.png" alt="应用1"></a>
+        <a href="app2.html" class="dock-item"><img src="icon2.png" alt="应用2"></a>
+        <a href="app3.html" class="dock-item"><img src="icon3.png" alt="应用3"></a>
+        <a href="app4.html" class="dock-item"><img src="icon4.png" alt="应用4"></a>
+        <a href="app5.html" class="dock-item"><img src="icon5.png" alt="应用5"></a>
+        <a href="app6.html" class="dock-item"><img src="icon6.png" alt="应用6"></a>
+        <a href="app7.html" class="dock-item"><img src="icon7.png" alt="应用7"></a>
+        <a href="app8.html" class="dock-item"><img src="icon8.png" alt="应用8"></a>
+        <a href="0000.html" class="dock-item"><img src="icon9.png" alt="应用9"></a>
+        <a href="0000.html" class="dock-item"><img src="icon10.png" alt="应用10"></a>
+        <a href="0000.html" class="dock-item"><img src="icon11.png" alt="应用11"></a>
+        <a href="0000.html" class="dock-item"><img src="icon12.png" alt="应用12"></a>
+        
+    </div>
+
+    <!-- 毛玻璃背景层 -->
+    <div class="glass-layer" id="glassLayer"></div>
+    </div>
+    </script>
+</body>
+</html>
