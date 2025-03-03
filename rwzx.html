@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文章跳转中 - 微信精选内容</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            background: #f8f8f8;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+        }
+
+        /* 微信风格加载动画 */
+        .wechat-loader {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .wechat-loader::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 4px solid #07c160;
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* 毛玻璃提示框 */
+        .glass-box {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 90%;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #1a1a1a;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        p {
+            color: #666;
+            line-height: 1.6;
+            margin: 10px 0;
+        }
+
+        .open-button {
+            background: #07c160;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .open-button:hover {
+            transform: scale(1.05);
+        }
+
+        /* 移动端优化 */
+        @media (max-width: 480px) {
+            .glass-box {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wechat-loader"></div>
+    
+    <div class="glass-box">
+        <h1>正在打开每日任务答题处</h1>
+        <p>若页面没有自动跳转，请点击下方按钮</p>
+        
+        <button class="open-button" onclick="openWechatArticle()">
+            立即打开
+        </button>
+    </div>
+
+    <script>
+        // 自动跳转功能
+        let timer = 5;
+        const countdown = setInterval(() => {
+            if(timer-- <= 0) {
+                clearInterval(countdown);
+                window.location.href = 'https://docs.qq.com/smartsheet/DVHJZWnpzWVJDUm51?viewId=vUQPXH&tab=BB08J2';
+            }
+        }, 1000);
+
+        // 手动打开函数
+        function openWechatArticle() {
+            window.location.href = 'https://docs.qq.com/smartsheet/DVHJZWnpzWVJDUm51?viewId=vUQPXH&tab=BB08J2';
+        }
+
+        // 微信环境检测
+        const isWechat = /MicroMessenger/i.test(navigator.userAgent);
+        if(!isWechat) {
+            document.querySelector('p').innerHTML += '<br><span style="color:#f00">每日任务内容详见公众号，局长您答题在这里</span>';
+        }
+    </script>
+</body>
+</html>
